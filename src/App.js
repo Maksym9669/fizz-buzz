@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import "./App.css";
-import { redBright } from "ansi-colors";
 
 class App extends Component {
   render() {
