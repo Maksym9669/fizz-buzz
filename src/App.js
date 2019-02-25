@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 
 import "./App.css";
+import { redBright } from "ansi-colors";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Header />
+        <div class="container">
+          <Login />
+          <Game />
+        </div>
       </div>
     );
   }
@@ -28,19 +33,20 @@ class Header extends Component {
 
 class Button extends Component {
   render() {
-    return (
-      <div>
-        <p>Test</p>
-      </div>
-    );
+    return <button>Increment</button>;
   }
 }
 
 class Game extends Component {
   render() {
     return (
-      <div>
-        <p>Something</p>
+      <div class="row" style={{ backgroundColor: "rgb(220,220,220)" }}>
+        <div class="col-8">
+          <Results />
+        </div>
+        <div class="col-4">
+          <Button />
+        </div>
       </div>
     );
   }
@@ -49,8 +55,25 @@ class Game extends Component {
 class Login extends Component {
   render() {
     return (
-      <div>
-        <p>Something</p>
+      <div class="row">
+        <div class="offset-2 col-8 offset-2">
+          <div
+            style={{
+              minHeight: "200px",
+              backgroundColor: "rgb(230, 230, 230)"
+            }}
+          >
+            <p>Login</p>
+            <div class="row">
+              <div class="col-6">
+                <p>Enter your username: </p>
+              </div>
+              <div class="col-6">
+                <input type="text" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -60,7 +83,8 @@ class Results extends Component {
   render() {
     return (
       <div>
-        <p>Something</p>
+        <p>Current score: 10</p>
+        <p>Current value: Buzz</p>
       </div>
     );
   }
