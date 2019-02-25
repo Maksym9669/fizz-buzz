@@ -1,25 +1,66 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+
+import "./App.css";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header />
+      </div>
+    );
+  }
+}
+
+class Header extends Component {
+  render() {
+    return (
+      <header className="App-header">
+        Fizz Buzz Challenge
+        <a style={{}} href="https://github.com/Maksym9669">
+          {" "}
+          <i class="fab fa-github" />
+        </a>
+      </header>
+    );
+  }
+}
+
+class Button extends Component {
+  render() {
+    return (
+      <div>
+        <p>Something</p>
+      </div>
+    );
+  }
+}
+
+class Game extends Component {
+  render() {
+    return (
+      <div>
+        <p>Something</p>
+      </div>
+    );
+  }
+}
+
+class Login extends Component {
+  render() {
+    return (
+      <div>
+        <p>Something</p>
+      </div>
+    );
+  }
+}
+
+class Results extends Component {
+  render() {
+    return (
+      <div>
+        <p>Something</p>
       </div>
     );
   }
