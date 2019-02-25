@@ -30,7 +30,7 @@ class Button extends Component {
   render() {
     return (
       <div>
-        <p>Something</p>
+        <p>Test</p>
       </div>
     );
   }
