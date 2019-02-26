@@ -1,15 +1,100 @@
 import React, { Component } from "react";
-
+import axios from "axios";
 import "./App.css";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      currentValue: 0
+    };
+
+    this.onSubmit = this.onSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.getData = this.getData.bind(this);
+    this.onIterate = this.onIterate.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ username: event.target.value });
+  }
+  getData(data) {
+    const { score, id } = data;
+    this.setState({ username: id, currentValue: score });
+  }
+  onIterate() {
+    const { username } = this.state;
+    this.setState({ currentValue: this.state.currentValue + 1 });
+    axios({
+      method: "post",
+      url: `http://131.247.210.6:8000/${username}`,
+      data: { id: this.state.username, score: this.state.currentValue },
+      config: { headers: { "Content-Type": "multipart/form-data" } }
+    }).then(res => console.log(res));
+  }
+
+  onSubmit(event) {
+    const { username } = this.state;
+
+    //Make a get request and (post request if needed).
+    // axios
+    //   .get(`http://131.247.210.6:8000/${username}`)
+    //   .then(res => {
+    //     let response = res.data;
+
+    //     console.log(response.score);
+    //     this.setState({ username: response.id, currentValue: response.score });
+    //   })
+    //   .catch(error => {
+    // axios({
+    //   method: "post",
+    //   url: `http://131.247.210.6:8000/${username}`,
+    //   data: { score: this.state.currentValue },
+    //   config: { headers: { "Content-Type": "multipart/form-data" } }
+    // })
+    //       .then(() => {
+    //         axios
+    //           .get(`http://131.247.210.6:8000/${username}`)
+    //           .then(res => {
+    //             let response = res.data;
+    //             console.log(response.score);
+    //             this.setState({
+    //               username: response.id,
+    //               currentValue: response.score
+    //             });
+    //           })
+    //           .catch(err => console.log(err));
+    //       })
+    //       .catch(error => console.log(error));
+    //   });
+
+    axios(`http://131.247.210.6:8000/${username}`)
+      .then(result => this.getData(result.data))
+      .catch(error => console.log(error));
+    // axios({
+    //   method: "post",
+    //   url: `http://131.247.210.6:8000/${username}`,
+    //   data: { id: this.state.username, score: this.state.currentValue },
+    //   config: { headers: { "Content-Type": "multipart/form-data" } }
+    // }).then(res => console.log(res));
+    event.preventDefault();
+  }
+
   render() {
     return (
       <div className="App">
+        {this.state.username}
+        {"  "}
+        {this.state.currentValue}
         <Header />
         <div class="container">
-          <Login />
-          <Game />
+          <Login
+            onChange={this.handleChange}
+            username={this.state.username}
+            onSubmit={this.onSubmit}
+          />
+          <Game onIterate={this.onIterate} />
         </div>
       </div>
     );
@@ -32,7 +117,7 @@ class Header extends Component {
 
 class Button extends Component {
   render() {
-    return <button>Increment</button>;
+    return <button onClick={this.props.onIterate}>Increment</button>;
   }
 }
 
@@ -44,7 +129,7 @@ class Game extends Component {
           <Results />
         </div>
         <div class="col-4">
-          <Button />
+          <Button onIterate={this.props.onIterate} />
         </div>
       </div>
     );
@@ -56,22 +141,26 @@ class Login extends Component {
     return (
       <div class="row">
         <div class="offset-2 col-8 offset-2">
-          <div
-            style={{
-              minHeight: "200px",
-              backgroundColor: "rgb(230, 230, 230)"
-            }}
-          >
-            <p>Login</p>
-            <div class="row">
-              <div class="col-6">
-                <p>Enter your username: </p>
+          <form onSubmit={this.props.onSubmit}>
+            <div
+              style={{
+                minHeight: "200px",
+                backgroundColor: "rgb(230, 230, 230)"
+              }}
+            >
+              <p>Login</p>
+              <div class="row">
+                <div class="col-6">
+                  <p>Enter your username: </p>
+                </div>
+                <div class="col-6">
+                  <input type="text" onChange={this.props.onChange} />
+                </div>
+                <div class="col-6 text-center" />
               </div>
-              <div class="col-6">
-                <input type="text" />
-              </div>
+              <button type="submit">Register</button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     );
