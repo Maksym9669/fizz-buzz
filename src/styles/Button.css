@@ -1,0 +1,20 @@
+.btn-button {
+  background-color: rgb(229, 22, 107);
+  color: white;
+  border: none;
+  margin-top: 20px;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.btn-button:hover {
+  background-color: white;
+  color: rgb(229, 22, 107);
+  border: none;
+}
+
+.btn-button:focus {
+  background-color: rgb(229, 22, 107);
+  color: white;
+  border: none;
+}
