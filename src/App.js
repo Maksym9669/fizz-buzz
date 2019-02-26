@@ -32,7 +32,7 @@ class App extends Component {
     this.setState({ currentValue: this.state.currentValue + 1 });
     axios({
       method: "post",
-      url: `http://131.247.210.6:8000/${username}`,
+      url: `https://131.247.210.6:8000/${username}`,
       data: { id: this.state.username, score: this.state.currentValue },
       config: { headers: { "Content-Type": "multipart/form-data" } }
     }).then(res => console.log(res));
@@ -46,7 +46,7 @@ class App extends Component {
       this.setState({ welcome: true, authorized: true });
     }
     // this.setState({ welcome: true, authorized: true });
-    axios(`http://131.247.210.6:8000/${username}`)
+    axios(`https://131.247.210.6:8000/${username}`)
       .then(result => this.getData(result.data))
       .catch(error => console.log(error));
     event.preventDefault();
