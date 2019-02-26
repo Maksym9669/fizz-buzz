@@ -1,0 +1,32 @@
+.btn-button {
+  background-color: rgb(229, 22, 107);
+  color: white;
+  border: none;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.btn-button:hover {
+  background-color: white;
+  color: rgb(229, 22, 107);
+  border: none;
+}
+
+.btn-button:focus {
+  background-color: rgb(229, 22, 107);
+  color: white;
+  border: none;
+}
+
+.login {
+  min-height: 200px;
+  background-color: rgb(230, 230, 230);
+  margin-top: 50px;
+}
+
+p {
+  font-size: 20px;
+}
+.row-content {
+  padding-top: 40px;
+}
