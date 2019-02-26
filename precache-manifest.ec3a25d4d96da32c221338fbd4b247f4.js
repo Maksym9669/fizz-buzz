@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "9daf9385c808ccded382",
+    "revision": "c1a459156dea332fd4fb",
     "url": "/fizz-buzz/static/css/main.ae8f9007.chunk.css"
   },
   {
-    "revision": "9daf9385c808ccded382",
-    "url": "/fizz-buzz/static/js/main.9daf9385.chunk.js"
+    "revision": "c1a459156dea332fd4fb",
+    "url": "/fizz-buzz/static/js/main.c1a45915.chunk.js"
   },
   {
     "revision": "ca065b4dab31c1550549",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/fizz-buzz/static/js/2.9482b373.chunk.js"
   },
   {
-    "revision": "77291141fbc79809f4bc87848ee31ed7",
+    "revision": "495c6ec7361a2996b567c546c068e5fa",
     "url": "/fizz-buzz/index.html"
   }
 ];
