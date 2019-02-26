@@ -7,13 +7,14 @@ import Game from "./components/Game";
 class App extends Component {
   constructor(props) {
     super(props);
+    //Create a local state for the parent object, so that its children can manipulate its state via class methods that will be passed as props
     this.state = {
       username: "",
       currentValue: 0,
       welcome: false,
       authorized: false
     };
-
+    //Bind class methods to an instance (this), so we have access to "this" inside class methods
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getData = this.getData.bind(this);
@@ -27,17 +28,18 @@ class App extends Component {
     const { score, id } = data;
     this.setState({ username: id, currentValue: score });
   }
+  //For each iteration make a post request to the server
   onIterate() {
     const { username } = this.state;
     this.setState({ currentValue: this.state.currentValue + 1 });
     axios({
       method: "post",
       url: `http://131.247.210.6:8000/${username}`,
-      data: { id: this.state.username, score: this.state.currentValue },
+      data: { id: this.state.username, score: this.state.currentValue + 1 },
       config: { headers: { "Content-Type": "multipart/form-data" } }
     }).then(res => console.log(res));
   }
-
+  //Make a get request when the user clicks a button for registration
   onSubmit(event) {
     const { username } = this.state;
     if (username === "") {
