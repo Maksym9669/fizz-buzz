@@ -34,9 +34,9 @@ class App extends Component {
     this.setState({ currentValue: this.state.currentValue + 1 });
     axios({
       method: "post",
-      url: `http://131.247.210.6:8000/${username}`,
+      url: `http://192.168.1.88:8000/${username}`,
       data: { id: this.state.username, score: this.state.currentValue + 1 },
-      config: { headers: { "Content-Type": "multipart/form-data" } }
+      config: { headers: { "Content-Type": "application/json" } }
     }).then(res => console.log(res));
   }
   //Make a get request when the user clicks a button for registration
@@ -48,8 +48,19 @@ class App extends Component {
       this.setState({ welcome: true, authorized: true });
     }
     // this.setState({ welcome: true, authorized: true });
-    axios(`http://131.247.210.6:8000/${username}`)
-      .then(result => this.getData(result.data))
+    // axios(`http://192.168.1.88:8000/${username}`)
+    axios({
+      method: "get",
+      url: `http://192.168.1.88:8000/${username}`,
+      data: {
+        score: "integer"
+      },
+      config: { headers: { "Content-Type": "application/json" } }
+    })
+      .then(result => {
+        this.getData(result.data);
+        console.log(result);
+      })
       .catch(error => console.log(error));
     event.preventDefault();
   }
