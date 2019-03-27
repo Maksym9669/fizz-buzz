@@ -34,9 +34,13 @@ class App extends Component {
     this.setState({ currentValue: this.state.currentValue + 1 });
     axios({
       method: "post",
-      url: `http://192.168.1.88:8000/${username}`,
-      data: { id: this.state.username, score: this.state.currentValue + 1 },
-      config: { headers: { "Content-Type": "application/json" } }
+      url: `http://10.226.57.230:8000/${username}`,
+      data: {
+        id: this.state.username,
+        score: parseInt(this.state.currentValue + 1)
+      },
+      // headers: { "content-type": "text/html" }
+      headers: { "content-type": "application/json" }
     }).then(res => console.log(res));
   }
   //Make a get request when the user clicks a button for registration
@@ -51,11 +55,8 @@ class App extends Component {
     // axios(`http://192.168.1.88:8000/${username}`)
     axios({
       method: "get",
-      url: `http://192.168.1.88:8000/${username}`,
-      data: {
-        score: "integer"
-      },
-      config: { headers: { "Content-Type": "application/json" } }
+      url: `http://10.226.57.230:8000/${username}`,
+      headers: { "content-type": "application/json" }
     })
       .then(result => {
         this.getData(result.data);
